@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gess Number</title>
+    <!-- ============ CSS =============== -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- ============ JS =============== -->
     <script src="main.js"></script>
 
-    <!-- External links -->
+    <!-- ============ External links ======== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
@@ -17,30 +19,109 @@
 </head>
 
 <body>
-<header>
-    <a href="#" target="_blank">Guess Number</a>
-</header>
+    <header>
+        <a href="#">Guess Number</a>
+    </header>
 
-<main class="container">
-    <form>
-        <label for="kick">Put a number between (0 - 10)</label>
-        <input type="number" id="kick" max="10" placeholder="0">
+    <main class="container">
+        <form id="form">
+            <label for="kick">Put a number between (0 - 10)</label>
+            <input type="number" id="kick" max="10" placeholder="0">
 
-        <button type="submit">Play!</button>
-    </form>
+            <button type="submit">Play!</button>
+        </form>
 
-    <section class="result-box" id="result-box">
-        <h2 id="status">Guess the number!!</h2>
-        <span id="attempts">Attempts: 0</span>
-    </section>
+        <section class="result-box" id="result-box">
+            <h2 id="status">Guess the number!!</h2>
+            <span id="attempt">Attempts: 0</span>
+        </section>
 
-    <button id="btn-restart">Play again!</button>
+        <button id="btn-restart" onclick="restart()">Play again!</button>
 
-</main>
+    </main>
 
-<footer>
-    <p> <i>W <sub style="font-size: 1rem;">T</sub>O - 2022 &copy;</i></p>
-</footer>
+    <footer>
+        <p><i>W<sub style="font-size: 1rem;">T</sub>O - 2022 &copy;</i></p>
+    </footer>
+
+    <!-- ======================================================= -->
+    <!-- =================== JavaScript ======================== -->
+    <!-- ======================================================= -->
+
+    <script>
+        document.querySelector('#kick').focus();
+        const form = document.querySelector('#form');
+
+        let status = document.querySelector('#status');
+        let attempt = document.querySelector('#attempt');
+        let result = document.querySelector('#result-box');
+
+        const Guess = {
+            max: 10,
+            attemptsNumber: 0,
+            numberDrawn: function randomValue() {
+                return Math.round(Math.random() * this.max);
+            }
+        };
+
+        let numberDrawn = Guess.numberDrawn();
+
+        function updateAttempt(attempt, value) {
+            attempt.innerHTML = `Attempt: ${value} !!`;
+        };
+
+        function handleSubmit(e) {
+            e.preventDefault();
+
+            let kick = document.querySelector('#kick').value;
+
+            if (!kick) {
+                alert('Put a number bettween (0 - 10)!!!')
+                document.querySelector('#kick').focus();
+                return;
+            }
+
+            updateAttempt(attempt, ++Guess.attemptsNumber);
+
+            if (numberDrawn == kick) {
+                playAgain();
+                status.innerHTML = "Congratulations, you won!!!";
+                result.style.transition = '.4s';
+                result.style.backgroundColor = '#f7941d';
+                result.style.color = '#000';
+                status.style.color = '#000';
+                document.querySelector('#kick').focus();
+                clear();
+            } else if (numberDrawn > kick) {
+                status.innerHTML = 'The number is bigger!';
+                status.style.color = '#de4251';
+                clear();
+                document.querySelector('#kick').focus();
+            } else if (numberDrawn < kick) {
+                status.innerHTML = 'The number is smaller!';
+                status.style.color = '#de4251';
+                clear();
+                document.querySelector('#kick').focus();
+            }
+
+        };
+
+        function playAgain() {
+            document.querySelector('#btn-restart').style.display = 'flex';
+            document.querySelector('#kick').focus();
+        };
+
+        function restart() {
+            document.location.reload(true);
+        };
+
+        function clear() {
+            document.querySelector('#kick').value = '';
+        };
+
+        form.addEventListener('submit', handleSubmit);
+
+    </script>
 </body>
 
 </html>

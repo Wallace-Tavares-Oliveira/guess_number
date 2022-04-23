@@ -2,6 +2,7 @@
 
 :root {
     --white: #fff;
+    --black: #000;
     --blue: #00348a;
     --blue-light: #0bbbd6;
 
@@ -17,19 +18,25 @@
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
     text-decoration: none;
+    background-image: url(../img/bg-guess-number.jpg);
 }
 
 /* ============== Header =========== */
 
 header {
-    width: 100%;;
+    width: 100%;
     text-align: center;
-    padding: 2rem;
     box-shadow: 0px 2px 4px var(--box-shadow-one);
     background-color: var(--white);
 }
 
-header h1 {
+a {
+    color: var(--white);
+    font-size: 4rem;
+    font-weight: 900;
+}
+
+header h2 {
     color: var(--blue);
     font-size: 2.8rem;
     font-weight: 300;
@@ -63,9 +70,12 @@ header h1 {
 }
 
 .container form label {
-    color: var(--white);
+    color: var(--black);
     font-size: 1.3rem;
     font-weight: 600;
+    border-radius: 5px 5px 0 0;
+    background: var(--white);
+    text-align: center;
 }
 
 .container form input {
@@ -73,10 +83,12 @@ header h1 {
     outline: 0;
     margin:  5% 0px;
     padding: 10px;
-    font-size: 1.2rem;
-    font-weight: 300;
+    font-size: 1.5rem;
+    font-weight: 600;
     border-radius: .2rem;
+    background: var(--white);
     box-shadow: 2px 2px 1px var(--box-shadow-one);
+    text-align: center;
 }
 
 .container form input:focus {
@@ -111,18 +123,22 @@ header h1 {
     padding: 2rem;
     border-radius: .5rem;
     box-shadow: 1px 1px 5px 0px var(--box-shadow-two);
-    color: var(--blue)
+    color: var(--blue);
+    text-align: center;
 }
 
 .container .result-box h2 {
     font-weight: 500;
     font-size: 1.5rem;
     margin: 5% 0%;
+    background: var(--white);
+    
 }
 
 .container .result-box span {
     font-size: 1.3rem;
     font-weight: 300;
+    background: var(--white);
 }
 
 /* ============= Btn play again ======= */
@@ -154,10 +170,11 @@ footer {
     padding: 1.5rem;
     text-align: center;
     box-shadow: inset 0px 0px 4px 0px var(--box-shadow-one);
+    
 }
 
 footer p {
-    color: var(--blue);
+    color: var(--white);
     font-size: 1rem;
     font-weight: 400;
 }
