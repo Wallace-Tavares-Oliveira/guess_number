@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gess</title>
+    <title>Gess Number</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="main.js"></script>
+
+    <!-- External links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
-    
+<header>
+    <a href="#" target="_blank">Guess Number</a>
+</header>
+
+<main class="container">
+    <form>
+        <label for="kick">Put a number between (0 - 10)</label>
+        <input type="number" id="kick" max="10" placeholder="0">
+
+        <button type="submit">Play!</button>
+    </form>
+
+    <section class="result-box" id="result-box">
+        <h2 id="status">Guess the number!!</h2>
+        <span id="attempts">Attempts: 0</span>
+    </section>
+
+    <button id="btn-restart">Play again!</button>
+
+</main>
+
+<footer>
+    <p> <i>W <sub style="font-size: 1rem;">T</sub>O - 2022 &copy;</i></p>
+</footer>
 </body>
+
 </html>
